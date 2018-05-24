@@ -106,7 +106,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Africa/Nairobi'
 
 USE_I18N = True
 
@@ -119,3 +119,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'                                                                             
+EMAIL_HOST ='smtp.gmail.com'                                   
+EMAIL_PORT = 587                                                             
+EMAIL_HOST_USER = 'kiptim54@gmail.com'                              
+EMAIL_HOST_PASSWORD = 'jerotich' #This is not your gmail password.
+EMAIL_USE_TLS = True
+

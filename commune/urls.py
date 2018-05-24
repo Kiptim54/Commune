@@ -15,10 +15,12 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-import communeapp
+from communeapp import views
+from communeapp.forms import SignUpForm
 
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', include('communeapp.urls')),
+    url(r'^', include('communeapp.urls')),
+   
 ]
