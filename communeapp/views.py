@@ -3,7 +3,7 @@ from django.contrib.sites.shortcuts import get_current_site
 from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.template.loader import render_to_string
-from .forms import SignUpForm, Creatprofileform
+from .forms import SignUpForm, Creatprofileform, Createneighbourhood
 from .tokens import account_activation_token
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout,authenticate
@@ -25,9 +25,13 @@ def create_profile(request):
     function that saves users profile
     '''
     title="Commune | Create Profile"
+    try:
+        profile=Profile.objects.get(user=request.user)
+    except profile.DoesNotExist:
+        profile =Profile(user=request.user)
     current_user=request.user
     if request.method=='POST':
-        form=Creatprofileform(request.POST, request.FILES)
+        form=Creatprofileform(request.POST, request.FILES, instance=profile)
         if form.is_valid():
             profile=form.save(commit=False)
             profile.user=current_user
@@ -35,6 +39,22 @@ def create_profile(request):
     else:
         form=Creatprofileform()
     return render(request, 'watch/create_profile.html', {"title":title, "form":form})
+
+def create_neighbourhood(request):
+    '''
+    function for user to create neighbourhood
+    '''
+    title='Commune | Neighbourhood'
+    current_user=request.user
+    if request.method=='POST':
+        form=Createneighbourhood(request.POST)
+        if form.is_valid():
+            neighbourhood=form.save(commit=False)
+            neighbourhood.save()
+    else:
+        form=Createneighbourhood()
+    return render(request, 'watch/neighbourhood_profile.html', {"title":title, "form":form})
+
 
 def signup(request):
     if request.method == 'POST':

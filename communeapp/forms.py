@@ -14,3 +14,8 @@ class Creatprofileform(forms.ModelForm):
     class Meta:
         model=Profile
         fields=['name', 'profile_image','neighbourhood', 'email']
+
+class Createneighbourhood(forms.ModelForm):
+    class Meta:
+        model=Neighbourhood
+        fields=['neighbourhood_name', 'location', 'occupation_count']

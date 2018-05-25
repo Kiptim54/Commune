@@ -1,0 +1,23 @@
+{% extends 'watch/base.html' %}
+{% load bootstrap3 %}
+{% block content %}
+{% block styles %}
+{% bootstrap_css%}
+{% endblock %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <h3>Create Profile</h3>
+                <form  action="{%url 'create_neighbourhood'%}" method="post" enctype="multipart/form-data">
+                    {%csrf_token%}
+                
+                    {% bootstrap_form form%}
+                    <input type="submit" class="btn btn-success btn-lg" value="Post">
+                  </form>   
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
