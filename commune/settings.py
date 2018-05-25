@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'communeapp.apps.CommuneappConfig',
+    'bootstrap3',
 ]
 
 MIDDLEWARE = [
@@ -63,6 +64,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
             ],
         },
     },
@@ -119,13 +121,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'                                                                             
+EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'       
 EMAIL_HOST ='smtp.gmail.com'                                   
 EMAIL_PORT = 587                                                             
 EMAIL_HOST_USER = 'kiptim54@gmail.com'                              
-EMAIL_HOST_PASSWORD = 'jerotich' 
+EMAIL_HOST_PASSWORD = 'Jerotich7' 
 EMAIL_USE_TLS = True
 
+LOGIN_URL_REDIRECT = '/'
