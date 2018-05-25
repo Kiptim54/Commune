@@ -9,6 +9,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login, logout,authenticate
 from .models import Profile
 from django.contrib.auth.decorators import login_required
+from django.db import transaction
 
 # Create your views here.
 @login_required
@@ -20,6 +21,7 @@ def index_page(request):
     title="Commune | Home"
     return render(request, 'watch/index.html' ,{"title":title})
 
+@transaction.atomic
 def create_profile(request):
     '''
     function that saves users profile
