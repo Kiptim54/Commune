@@ -3,13 +3,13 @@ from django.contrib.sites.shortcuts import get_current_site
 from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.template.loader import render_to_string
-from .forms import SignUpForm, Creatprofileform, Createneighbourhood
+from .forms import SignUpForm, Creatprofileform, Createneighbourhood, BusinessForm
 from .tokens import account_activation_token
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout,authenticate
 from .models import Profile
 from django.contrib.auth.decorators import login_required
-from django.db import transaction
+
 
 # Create your views here.
 @login_required
@@ -21,7 +21,7 @@ def index_page(request):
     title="Commune | Home"
     return render(request, 'watch/index.html' ,{"title":title})
 
-@transaction.atomic
+
 def create_profile(request):
     '''
     function that saves users profile
@@ -56,6 +56,23 @@ def create_neighbourhood(request):
     else:
         form=Createneighbourhood()
     return render(request, 'watch/neighbourhood_profile.html', {"title":title, "form":form})
+
+def create_business(request):
+    '''
+    function to create business in 
+    a  neighbourhood
+    '''
+    current_user=request.user
+    title="Commune | Business " 
+    if request.method=='POST':
+        form=BusinessForm(request.POST)
+        if form.is_valid():
+            business=form.save(commit=False)
+            business.business_owner=current_user
+            business.save()
+    else:
+        form=BusinessForm()
+    return render(request, 'watch/business_profile.html', {"title":title, "form":form})
 
 
 def signup(request):
