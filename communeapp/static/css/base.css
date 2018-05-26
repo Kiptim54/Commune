@@ -4,7 +4,7 @@ margin:0;
 padding:0px;
 padding-right:0px;
 padding-left:0px;
-width: 224vh;
+
 
 }
 body, .container-fluid, .row, .col-md-12{
@@ -12,24 +12,22 @@ body, .container-fluid, .row, .col-md-12{
     padding:0px;
     padding-right:0px;
     padding-left:0px; 
-    margin-top: -7px;  
-    margin-right: -16px;
+    margin-top: 0px;  
+    margin-right:0px;
+    position: relative;
 }
 #header{
     height:70vh;
     background:lightblue;
     padding:0px;
     margin:0;
+    position: relative;
     
 }
-.tagline{
-    position: relative;
-    top:30%;
-    left:28%;
-}
+
 
 .logo{
-    position: absolute;;
+    position: absolute;
     right:5%;
     top:25%;
     width: 100%;
@@ -38,13 +36,17 @@ body, .container-fluid, .row, .col-md-12{
 img{
     margin-top:0;
 }
-.navbar{
+.nav{
     margin:0;
-    padding:0px;  
+    padding:0px;
+    height:10%;  
 }
 .navoptions{
-    position: relative;
-    left:20%;
-    top:30%;
+    position: absolute;
+    left:21%;
+    top:135%;
+    color:#41A9A2;
+}
+a, a:hover{
     color:#41A9A2;
 }
