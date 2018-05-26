@@ -12,6 +12,8 @@ urlpatterns = [
     url(r'business/$', views.create_business, name='create_business'),
     url(r'^message/$', views.send_message, name='send_message'),
     url(r'profile$', views.view_profile, name='view_profile'),
+    url(r'alerts/$', views.view_messages, name='view_messages'),
+    url(r'businesses/$', views.view_businesses, name='view_businesses'),
     url(r'^signup/$', views.signup, name='signup'),
     url(r'^account_activation_sent/$', views.account_activation_sent, name='account_activation_sent'),
     url(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',

@@ -7,7 +7,7 @@ from .forms import SignUpForm, Creatprofileform, Createneighbourhood, BusinessFo
 from .tokens import account_activation_token
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout,authenticate
-from .models import Profile
+from .models import Profile, Message, Neighbourhood, Business
 from django.contrib.auth.decorators import login_required
 
 
@@ -22,13 +22,34 @@ def index_page(request):
     current_user=request.user
     allprofiles=Profile.objects.all()
     profile=Profile.objects.filter(user=current_user)
-    return render(request, 'watch/index.html' ,{"title":title, "profile":profile, "allprofiles":profile})
+    return render(request, 'watch/index.html' ,{"title":title, "profile":profile, "profile":allprofiles})
 
 def view_profile(request):
     title="Commune | Profile "
     current_user=request.user
     profile=Profile.objects.filter(user=current_user)
     return render(request, 'views/profile.html', {"profile":profile, "title":title })
+
+def view_messages(request):
+    title="Commune | Alerts "
+    current_user=request.user
+    neighbours=Profile.objects.get(user=current_user)
+    neighbourhood=neighbours.neighbourhood
+    message=Message.objects.filter(hood=neighbourhood)
+    print(neighbourhood)
+    return render(request, 'views/messages.html', {"title":title, "messages":message, "hood":neighbourhood})
+
+def view_businesses(request):
+    title="Commune | Business"
+    current_user=request.user
+    neighbours=Profile.objects.get(user=current_user)
+    neighbourhood=neighbours.neighbourhood
+    businesses=Business.objects.filter(neighbourhood=neighbourhood)
+    print(businesses)
+
+    return render(request, 'views/business.html', {"title":title, "hood":neighbourhood, "businesses":businesses})
+
+
 
 
 

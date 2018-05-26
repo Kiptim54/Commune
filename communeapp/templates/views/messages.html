@@ -1,0 +1,20 @@
+{% extends 'watch/base.html' %}
+{% load bootstrap3 %}
+{% load static %}
+{% block styles %}
+{% bootstrap_css%}
+<link rel="stylesheet" href="static/css/base.css">
+{% endblock %}
+{% block content %}
+
+{% if messages %}
+{% for message in messages %}
+<p>{{message.message}}</p>
+{%endfor%}
+{% else %}
+<p>No message has been posted in {{hood}}</p>
+   </a>
+</p>
+{% endif %}
+  
+{% endblock %}

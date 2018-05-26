@@ -57,7 +57,7 @@ nav #bodynav{
 nav #brand{
     float:left;
     font-size:150%;
-    
+    margin-bottom:3px;
     
 }
 .navoptions{

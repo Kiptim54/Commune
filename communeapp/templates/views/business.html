@@ -1,0 +1,20 @@
+{% extends 'views/base.html' %}
+{% load bootstrap3 %}
+{% load static %}
+{% block styles %}
+{% bootstrap_css%}
+<link rel="stylesheet" href="static/css/base.css">
+{% endblock %}
+{% block content %}
+
+{% if businesses %}
+{% for business in businesses %}
+<p>{{business.business_name}}</p>
+{%endfor%}
+{% else %}
+<p>No businesses posted in {{hood}}</p>
+   </a>
+</p>
+{% endif %}
+  
+{% endblock %}
