@@ -4,10 +4,11 @@ margin:0;
 padding:0px;
 padding-right:0px;
 padding-left:0px;
+font-family: 'Andika', sans-serif;
 
 
 }
-body, .container-fluid, .row, .col-md-12{
+body, .container-fluid, .row, .col-xs-12{
     margin:0;
     padding:0px;
     padding-right:0px;
@@ -36,7 +37,7 @@ body, .container-fluid, .row, .col-md-12{
 
 .logo{
     position: absolute;
-    right:5%;
+    right:2%;
     top:25%;
     width: 100%;
     height: auto;
@@ -71,9 +72,27 @@ nav #brand{
 .navoptions{
     position: absolute;
     left:21%;
-    top:135%;
-    color:#41A9A2;
+    top:10%;
+    color:black;
+}
+.navoptions a, .navoptions a:hover{
+    color:black;
 }
 a, a:hover{
     color:#41A9A2;
+}
+.aboutus{
+    height:70vh;
+}
+.wrap{
+    padding:4%;
+    margin-top:50%;
+    padding-top:10%;
+    border:2px dotted #41A9A2;
+}
+.footer{
+    height:30vh;
+    color:white;
+    background:#41A9A2;
+    padding-top:2%;
 }
