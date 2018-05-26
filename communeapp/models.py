@@ -49,6 +49,13 @@ def update_user_profile(sender,instance, created, **kwargs):
         Profile.objects.create(user=instance)
     instance.profile.save()
 
+class Message(models.Model):
+    message=models.CharField(max_length=1000)
+    user=models.ForeignKey(User)
+    profile=models.ForeignKey(Profile)
+    hood=models.ForeignKey(Neighbourhood)
 
+    def __str__(self):
+        return self.message
 
 

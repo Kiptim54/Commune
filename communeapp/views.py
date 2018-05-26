@@ -1,9 +1,9 @@
-from django.shortcuts import render, HttpResponse, redirect, HttpResponseRedirect
+from django.shortcuts import render, HttpResponse, redirect, HttpResponseRedirect, get_object_or_404
 from django.contrib.sites.shortcuts import get_current_site
 from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.template.loader import render_to_string
-from .forms import SignUpForm, Creatprofileform, Createneighbourhood, BusinessForm
+from .forms import SignUpForm, Creatprofileform, Createneighbourhood, BusinessForm, MessageForm
 from .tokens import account_activation_token
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout,authenticate
@@ -73,6 +73,27 @@ def create_business(request):
     else:
         form=BusinessForm()
     return render(request, 'watch/business_profile.html', {"title":title, "form":form})
+
+def send_message(request):
+    '''
+    function for neighbours to share messages with 
+    each other
+    '''
+    current_user=request.user
+    title="Commune | Message"
+    profile=Profile.objects.get(user=current_user)
+    if request.method=='POST':
+        form=MessageForm(request.POST)
+        if form.is_valid():
+            message=form.save(commit=False)
+            message.user=current_user
+            message.profile=profile
+            message.hood=profile.neighbourhood
+            message.save()
+    else:
+        form=MessageForm()
+
+    return render(request, 'watch/send_message.html', {"form":form, "title":title})
 
 
 def signup(request):
