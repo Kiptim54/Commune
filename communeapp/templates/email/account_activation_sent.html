@@ -1,6 +1,13 @@
-Hello!
-Thank you for signing up to Commune.
+{% extends 'email/base.html' %}
+{% load bootstrap3 %}
+{% block styles %}
+{% bootstrap_css %}
+<link rel="stylesheet" href="static/css/base.css">
+{% endblock %}
+{% block content %}
+Hello {{user}}! Thank you for signing up to Commune.
 Please confirm your email to complete the registration process.
 
 <button><a href="/signup">Sign Up</a></button>
 <button><a href="/login">login</a></button>
+{% endblock %}

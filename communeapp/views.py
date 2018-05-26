@@ -97,6 +97,7 @@ def send_message(request):
 
 
 def signup(request):
+    title="Commune | Sign Up"
     if request.method == 'POST':
         form = SignUpForm(request.POST)
         if form.is_valid():
@@ -116,7 +117,7 @@ def signup(request):
             return redirect('account_activation_sent')
     else:
         form = SignUpForm()
-    return render(request, 'registration/signup.html', {'form': form})
+    return render(request, 'registration/signup.html', {'form': form, "title":title})
 
 def activate(request, uidb64, token):
     try:
