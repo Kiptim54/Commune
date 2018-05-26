@@ -19,7 +19,17 @@ def index_page(request):
     landing page
     '''
     title="Commune | Home"
-    return render(request, 'watch/index.html' ,{"title":title})
+    current_user=request.user
+    allprofiles=Profile.objects.all()
+    profile=Profile.objects.filter(user=current_user)
+    return render(request, 'watch/index.html' ,{"title":title, "profile":profile, "allprofiles":profile})
+
+def view_profile(request):
+    title="Commune | Profile "
+    current_user=request.user
+    profile=Profile.objects.filter(user=current_user)
+    return render(request, 'views/profile.html', {"profile":profile, "title":title })
+
 
 
 def create_profile(request):
@@ -38,6 +48,7 @@ def create_profile(request):
             profile=form.save(commit=False)
             profile.user=current_user
             profile.save()
+            return redirect('view_profile')
     else:
         form=Creatprofileform()
     return render(request, 'watch/create_profile.html', {"title":title, "form":form})

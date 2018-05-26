@@ -1,0 +1,26 @@
+
+{% extends 'views/base.html' %}
+{% load bootstrap3  %}
+{% load static %}
+{% block styles %}
+{% bootstrap_css %}
+<link rel="stylesheet" href="{% static 'css/base.css' %}">
+{% endblock %}
+{% block content %}
+
+{% if profile %}
+{% for prof in profile %}
+<h3>Name:{{prof.name}}</h3>
+<img src="{{prof.profile_image.url}}" class="img-responsive" alt="">
+<p>Neighbourhood:{{prof.neighbourhood}}</p>
+<p>Email:{{prof.email}}</p>
+
+{% endfor %}
+{{profile.name}}
+{% else %}
+<p>You do not have a profile, create one  <a href="{% url 'createprofile' %}">here : 
+   </a>
+</p>
+{% endif %}
+  
+{% endblock %}

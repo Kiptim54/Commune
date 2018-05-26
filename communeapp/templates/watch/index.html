@@ -3,12 +3,27 @@
 {% block content %}
 {% block styles %}
 {% bootstrap_css%}
+<link rel="stylesheet" href="static/css/base.css">
 {% endblock %}
 
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
-            <h2 class="welcome_page text-center">Welcome to Commune {{user.email}}</h2>
+            <div id="header">
+                <h2 class="tagline" >Hello {{user.username}}, Welcome to Commune.</h2>
+                <img src="static/photos/Commune Logo.png"class='img-responsive' alt="Commune Logo">
+              
+            </div>
+            <div class="navigate">
+                {% if profile %}
+                <p>
+                    <a href="{% url 'view_profile' %}">See profile</a>
+                </p>
+                {% else %}
+                <p>Create profile</p>
+                {% endif %}
+            </div>
+            
         </div>
     </div>
 </div>
