@@ -36,10 +36,29 @@ body, .container-fluid, .row, .col-md-12{
 img{
     margin-top:0;
 }
-.nav{
+nav{
     margin:0;
     padding:0px;
-    height:10%;  
+    height:10vh; 
+    background:white; 
+}
+nav ul{
+    padding:2%;
+}
+nav li{
+    list-style-type: none;
+    display: inline-block;
+    margin-left:2%;
+}
+nav #bodynav{
+    float:right;
+    
+}
+nav #brand{
+    float:left;
+    font-size:150%;
+    
+    
 }
 .navoptions{
     position: absolute;
