@@ -18,13 +18,21 @@ body, .container-fluid, .row, .col-md-12{
 }
 #header{
     height:70vh;
-    background:lightblue;
+    background-image: url('https://images.pexels.com/photos/304664/pexels-photo-304664.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
     padding:0px;
     margin:0;
     position: relative;
     
 }
-
+.navlogo{
+    width:10%;
+    height: 10%;
+    display:inline;
+    /* font:andika r */
+}
 
 .logo{
     position: absolute;
