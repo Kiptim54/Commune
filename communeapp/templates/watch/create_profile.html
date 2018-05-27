@@ -1,5 +1,6 @@
 {% extends 'watch/base.html' %}
 {% load bootstrap3 %}
+{% load static %}
 {% block content %}
 {% block styles %}
 {% bootstrap_css%}
@@ -20,6 +21,6 @@
         </div>
     </div>
 </div>
-
-
+<script type='text/javascript' src="{% static 'js/jquery-3.3.1.js'%}"></script>
+<script type='text/javascript' src="{% static 'js/scripts.js'%}"></script>
 {% endblock %}
