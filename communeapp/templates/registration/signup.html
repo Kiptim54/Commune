@@ -10,15 +10,18 @@
 
   <div class="container">
     <div class="row">
-      <div class="col-md-4">
+      <div class="col-md-6 offset-md-3">
           <h2>Sign up</h2>
+          <hr>
   <form method="post">
     {% csrf_token %}
     {% bootstrap_form form%}
     <button type="submit">Sign up</button>
+    <p>Have an account? <a href="{% url 'login'  %}">Login </a></p>
   </form>
       </div>
     </div>
   </div>
+  <hr>
   
 {% endblock %}
