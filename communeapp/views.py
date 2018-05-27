@@ -36,6 +36,7 @@ def view_messages(request):
     neighbours=Profile.objects.get(user=current_user)
     neighbourhood=neighbours.neighbourhood
     message=Message.objects.filter(hood=neighbourhood)
+    message=message.reverse()
     print(neighbourhood)
     return render(request, 'views/messages.html', {"title":title, "messages":message, "hood":neighbourhood})
 
@@ -122,6 +123,7 @@ def send_message(request):
             message.profile=profile
             message.hood=profile.neighbourhood
             message.save()
+            return redirect('view_messages')
     else:
         form=MessageForm()
 

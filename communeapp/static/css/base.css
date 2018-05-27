@@ -124,3 +124,15 @@ a, a:hover{
     background:#41A9A2;
     padding-top:2%;
 }
+.card{
+    margin-bottom:3%;
+    
+}
+.card-header, #cardbutton{
+    background: #41A9A2;
+    color:white;
+}
+ .formsprofile form{
+    display: inline-block;
+    color:pink;
+}

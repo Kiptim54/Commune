@@ -21,11 +21,18 @@
                         <h3>Name:{{prof.name}}</h3>
                         <p>Email:{{prof.email}}</p>
                         <p>Neighbourhood:{{prof.neighbourhood}}</p>
-                        <form action="{% url 'createprofile' %}" method="post">
-                            {% csrf_token%}
-                        <input type="submit" value="Edit Profile">
-                    </form>
-                        <input type="submit" value="Post Message">
+                        <div class="formsprofile">
+                                <form action="{% url 'createprofile' %}" method="post">
+                                        {% csrf_token%}
+                                    <input type="submit" value="Edit Profile">
+                                </form>
+                                <form action="{% url 'send_message' %}" method="post">
+                                    {% csrf_token%}
+                                    <input type="submit" value="Post Message">
+                                </form>
+                                    
+                        </div>
+                      
 
                        
                 </div>
