@@ -44,7 +44,7 @@
 {% endfor %}
 {{profile.name}}
 {% else %}
-<p>You do not have a profile, create one  <a href="{% url 'createprofile' %}">here : 
+<p>You do not have a profile, create one  <a id="linkhere" href="{% url 'createprofile' %}">here: 
    </a>
 </p>
 {% endif %}
@@ -54,6 +54,7 @@ Jquery -->
 <script type='text/javascript'>
         $(document).ready(function(){
             $("a").css("color","rgb(255,255,255)");
+            $("#linkhere").css("color","rgb(51, 153, 153)");
             $("nav").css("background-color","rgb(51, 153, 153)");
             
         });

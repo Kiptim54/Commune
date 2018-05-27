@@ -12,7 +12,6 @@ from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
-
 def index_page(request):
     '''
     function to call method in the 
@@ -20,16 +19,23 @@ def index_page(request):
     '''
     title="Commune | Home"
     current_user=request.user
-    allprofiles=Profile.objects.all()
-    profile=Profile.objects.filter(user=current_user)
+    if not current_user.is_authenticated():
+        return redirect('login')
+    else:
+        allprofiles=Profile.objects.all()
+        profile=Profile.objects.filter(user=current_user)
     return render(request, 'watch/index.html' ,{"title":title, "profile":profile, "profile":allprofiles})
-@login_required
+
+
 def view_profile(request):
     title="Commune | Profile "
     current_user=request.user
-    profile=Profile.objects.filter(user=current_user)
+    if not Profile.objects.filter(user=current_user).exists():
+        return redirect('createprofile')
+    else:
+        profile=Profile.objects.filter(user=current_user)
     return render(request, 'views/profile.html', {"profile":profile, "title":title })
-@login_required
+
 def view_messages(request):
     title="Commune | Alerts "
     current_user=request.user
@@ -39,7 +45,7 @@ def view_messages(request):
     message=message.reverse()
     print(neighbourhood)
     return render(request, 'views/messages.html', {"title":title, "messages":message, "hood":neighbourhood})
-@login_required
+
 def view_businesses(request):
     title="Commune | Business"
     current_user=request.user
@@ -86,6 +92,7 @@ def create_neighbourhood(request):
         if form.is_valid():
             neighbourhood=form.save(commit=False)
             neighbourhood.save()
+            return redirect('createprofile')
     else:
         form=Createneighbourhood()
     return render(request, 'watch/neighbourhood_profile.html', {"title":title, "form":form})

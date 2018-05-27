@@ -13,7 +13,9 @@
                     {%csrf_token%}
                 
                     {% bootstrap_form form%}
+
                     <input type="submit" class="btn btn-success btn-lg" value="Post">
+                    <p>Can't find your neighbourhood? register it  <a href="{% url 'create_neighbourhood'%}">here</a></p>
                   </form>   
         </div>
     </div>
