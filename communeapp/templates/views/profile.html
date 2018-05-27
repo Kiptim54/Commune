@@ -10,10 +10,29 @@
 
 {% if profile %}
 {% for prof in profile %}
-<h3>Name:{{prof.name}}</h3>
-<img src="{{prof.profile_image.url}}" class="img-responsive" alt="">
-<p>Neighbourhood:{{prof.neighbourhood}}</p>
-<p>Email:{{prof.email}}</p>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6 offset-md-3 text-center">
+            <div id="profilepage">
+                <h3>Profile</h3>
+                <hr>
+                <img id="profileimage" src="{{prof.profile_image.url}}" class="img-responsive" alt="">
+                <div class="profilecontent">
+                        <h3>Name:{{prof.name}}</h3>
+                        <p>Email:{{prof.email}}</p>
+                        <p>Neighbourhood:{{prof.neighbourhood}}</p>
+                        <form action="{% url 'createprofile' %}" method="post">
+                            {% csrf_token%}
+                        <input type="submit" value="Edit Profile">
+                    </form>
+                        <input type="submit" value="Post Message">
+
+                       
+                </div>
+            </div>  
+        </div>
+    </div>
+</div>
 
 {% endfor %}
 {{profile.name}}
@@ -22,5 +41,16 @@
    </a>
 </p>
 {% endif %}
-  
+<!-- 
+Jquery -->
+<script type='text/javascript' src='static/js/jquery-3.3.1.js'></script>
+<script type='text/javascript'>
+        $(document).ready(function(){
+            $("a").css("color","rgb(255,255,255)");
+            $("nav").css("background-color","rgb(51, 153, 153)");
+            
+        });
+</script>
 {% endblock %}
+
+
