@@ -1,2 +1,4 @@
 .env
-/virtual
+virtual/
+*.pyc
+.vscode/
