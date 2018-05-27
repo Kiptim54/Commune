@@ -17,6 +17,7 @@ class Neighbourhood(models.Model):
 class Business(models.Model):
     business_name=models.CharField(max_length=200)
     business_owner=models.ForeignKey(User)
+    business_type=models.CharField(max_length=100)
     neighbourhood=models.ForeignKey(Neighbourhood)
     business_email=models.CharField(max_length=100)
     phone_number=models.IntegerField()

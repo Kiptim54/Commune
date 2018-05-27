@@ -30,6 +30,10 @@
                                     {% csrf_token%}
                                     <input type="submit" value="Post Message">
                                 </form>
+                                <form action="{% url 'create_business' %}" method="post">
+                                        {% csrf_token%}
+                                        <input type="submit" value="Register Business">
+                                    </form>
                                     
                         </div>
                       

@@ -23,7 +23,7 @@ class Createneighbourhood(forms.ModelForm):
 class BusinessForm(forms.ModelForm):
     class Meta:
         model=Business
-        fields=['business_name','neighbourhood', 'business_email','phone_number']
+        fields=['business_name','business_type','neighbourhood', 'business_email','phone_number']
 
 class MessageForm(forms.ModelForm):
     class Meta:

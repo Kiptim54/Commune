@@ -110,6 +110,7 @@ def create_business(request):
             business=form.save(commit=False)
             business.business_owner=current_user
             business.save()
+            return redirect('view_businesses')
     else:
         form=BusinessForm()
     return render(request, 'watch/business_profile.html', {"title":title, "form":form})
@@ -172,7 +173,7 @@ def activate(request, uidb64, token):
         user.profile.email_confirmed = True
         user.save()
         login(request, user)
-        return redirect('/')
+        return redirect('createprofile')
     else:
         return render(request, 'account_activation_invalid.html')
 
