@@ -1,1 +1,1 @@
-web: gunicorn​ ​commune.wsgi​
+web: gunicorn commune.wsgi
