@@ -50,6 +50,7 @@ nav{
     padding:0px;
     height:10vh; 
     background:white; 
+    background-attachment: fixed;
 }
 nav ul{
     padding:2%;

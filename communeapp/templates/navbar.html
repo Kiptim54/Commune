@@ -4,47 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="static/css/base.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
 </head>
 <body>
-        <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                <a class="navbar-brand" href="#">Commune | Neighbourhood Watch</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                  <ul class="navbar-nav">
-                    <li class="nav-item active">
-                      <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#">Features</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#">Pricing</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Dropdown link
-                      </a>
-                      <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-              </nav> -->
-
+      
               <nav>
                 <ul>
-                  <li id="brand"><a href="">Commune | Neighbourhood Watch</a></li>
+                  <li id="brand"><a href="{% url 'landingpage'%}">Commune | Neighbourhood Watch</a></li>
                   <!-- <li id="brand"><a href=""><img src="static/photos/finalcommune.png" class="img-repsonsive navlogo" alt="commnune logo"></a></li> -->
-                  <li id="bodynav"><a href="">{{user.username}}</a></li>
-                  <li id="bodynav"><a href="">Businesses</a></li>
-                  <li id="bodynav"><a href="">Alerts</a></li>
-                  <li id="bodynav"><a href="">Home</a></li>
+                  <li id="bodynav"><a href="{% url 'view_profile'%}">{{user.username}}</a></li>
+                  <li id="bodynav"><a href="{% url 'view_businesses'%}">Businesses</a></li>
+                  <li id="bodynav"><a href="{% url 'view_messages'%}">Alerts</a></li>
+                  <li id="bodynav"><a href="{% url 'landingpage'%}">Home</a></li>
 
                 </ul>
               </nav>
