@@ -13,10 +13,15 @@
                 <ul>
                   <li id="brand"><a href="{% url 'landingpage'%}">Commune | Neighbourhood Watch</a></li>
                   <!-- <li id="brand"><a href=""><img src="static/photos/finalcommune.png" class="img-repsonsive navlogo" alt="commnune logo"></a></li> -->
+                  {% if user.is_authenticated %}
+                  <li id="bodynav"><a href="{% url 'logout'%}">Logout</a></li>
+                  {%else%}
+                  <li id="bodynav"><a href="{% url 'login'%}">Login</a></li>
+                  {% endif %}
                   <li id="bodynav"><a href="{% url 'view_profile'%}">{{user.username}}</a></li>
                   <li id="bodynav"><a href="{% url 'view_businesses'%}">Businesses</a></li>
                   <li id="bodynav"><a href="{% url 'view_messages'%}">Alerts</a></li>
-                  <li id="bodynav"><a href="{% url 'landingpage'%}">Home</a></li>
+                  
 
                 </ul>
               </nav>
