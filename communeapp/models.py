@@ -25,6 +25,10 @@ class Business(models.Model):
     def __str__(self):
         return self.business_name
 
+    @classmethod
+    def search_business(cls, search_term):
+        results=cls.objects.filter(business_name__icontains=search_term)
+        return results
 
 class Profile(models.Model):
     name=models.CharField(max_length=50)

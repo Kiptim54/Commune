@@ -56,7 +56,13 @@ def view_businesses(request):
 
     return render(request, 'views/business.html', {"title":title, "hood":neighbourhood, "businesses":businesses})
 
+def search_business(request):
+    if 'business' in request.GET and request.GET['business']:
+        search_term=request.GET.get('business')
+        searched_business=Business.search_business(search_term)
+        message=f'{search_term}'
 
+        return render(request, 'views/searched_business.html', {"message":message, "businesses":searched_business})
 
 
 @login_required
@@ -114,6 +120,7 @@ def create_business(request):
     else:
         form=BusinessForm()
     return render(request, 'watch/business_profile.html', {"title":title, "form":form})
+    
 @login_required
 def send_message(request):
     '''

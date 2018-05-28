@@ -1,0 +1,42 @@
+{% extends 'views/base.html' %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+                {% if businesses %}
+                <h3>{{businesses | length }} Results for {{message}}</h3>
+               
+                {%endif %}
+        </div>
+    </div>
+    <div class="container">
+            <div class="row">
+                    {% for business in businesses %}
+                  
+                    <div class="col-md-6 offset-md-3">
+                        <div class="card text-center">
+                                <div class="card-header">
+                                Featured
+                                </div>
+                                <div class="card-body">
+                                <h5 class="card-title"><p>Name: {{business.business_name}}</p></h5>
+                                <p class="card-text">Owner: {{business.business_owner}}</p>
+                                <p class="card-text">Contact Email: {{business.business_email}}</p>
+                                <a href="#" class="btn btn-primary">See Business Profile</a>
+                                </div>
+                                <div class="card-footer text-muted">
+                                ~~{{business.neighbourhood}}
+                                </div>
+                            </div>
+                    </div>
+                    
+                
+                {% endfor %}
+            </div>
+    </div>
+      
+
+
+
+
+{% endblock %}

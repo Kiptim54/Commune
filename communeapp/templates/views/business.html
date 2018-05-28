@@ -8,13 +8,53 @@
 {% block content %}
 
 {% if businesses %}
-{% for business in businesses %}
-<p>{{business.business_name}}</p>
-{%endfor%}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <form role='search' action="{% url 'search_business' %}" action="post">
+                <div class="input-group">
+                    <input class="form-control"  placeholder="Search for Business" type="text" name='business'>
+                    <div class="input-group-btn">
+                        <button style="color:white; background:#41A9A2;"class="btn btn-default" type="submit"><ion-icon name="search"></ion-icon></button>
+                    </div>
+
+                </div>
+               
+            </form>
+        </div>
+    </div>
+</div>
+<br>
+<div class="container">
+    <div class="row">
+            {% for business in businesses %}
+        <div class="col-md-6">
+           
+        <div class="card text-center">
+            <div class="card-header">
+            Featured
+            </div>
+            <div class="card-body">
+            <h5 class="card-title"><p>Name: {{business.business_name}}</p></h5>
+            <p class="card-text">Owner: {{business.business_owner}}</p>
+            <p class="card-text">Contact Email: {{business.business_email}}</p>
+            <a href="#" class="btn btn-primary">See Business Profile</a>
+            </div>
+            <div class="card-footer text-muted">
+            ~~{{business.neighbourhood}}
+            </div>
+        </div>
+       
+        </div>
+        {%endfor%}
+    </div>
+</div>
+
+
 {% else %}
 <p>No businesses posted in {{hood}}</p>
    </a>
 </p>
 {% endif %}
-  
+<script src="https://unpkg.com/ionicons@4.1.2/dist/ionicons.js"></script>
 {% endblock %}
