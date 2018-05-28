@@ -1,0 +1,68 @@
+
+{% extends 'views/base.html' %}
+{% load bootstrap3  %}
+{% load static %}
+{% block styles %}
+{% bootstrap_css %}
+<link rel="stylesheet" href="{% static 'css/base.css' %}">
+{% endblock %}
+{% block content %}
+
+{% if profile %}
+{% for prof in profile %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6 offset-md-3 text-center">
+            <div id="profilepage">
+                <h3>Profile</h3>
+                <hr>
+                <img id="profileimage" src="{{prof.profile_image.url}}" class="img-responsive" alt="">
+                <div class="profilecontent">
+                        <h3>Name:{{prof.name}}</h3>
+                        <p>Email:{{prof.email}}</p>
+                        <p>Neighbourhood:{{prof.neighbourhood}}</p>
+                        <div class="formsprofile">
+                                <form action="{% url 'createprofile' %}" method="post">
+                                        {% csrf_token%}
+                                    <input type="submit" value="Edit Profile">
+                                </form>
+                                <form action="{% url 'send_message' %}" method="post">
+                                    {% csrf_token%}
+                                    <input type="submit" value="Post Message">
+                                </form>
+                                <form action="{% url 'create_business' %}" method="post">
+                                        {% csrf_token%}
+                                        <input type="submit" value="Register Business">
+                                    </form>
+                                    
+                        </div>
+                      
+
+                       
+                </div>
+            </div>  
+        </div>
+    </div>
+</div>
+
+{% endfor %}
+{{profile.name}}
+{% else %}
+<p>You do not have a profile, create one  <a id="linkhere" href="{% url 'createprofile' %}">here: 
+   </a>
+</p>
+{% endif %}
+<!-- 
+Jquery -->
+<script type='text/javascript' src='static/js/jquery-3.3.1.js'></script>
+<script type='text/javascript'>
+        $(document).ready(function(){
+            $("a").css("color","rgb(255,255,255)");
+            $("#linkhere").css("color","rgb(51, 153, 153)");
+            $("nav").css("background-color","rgb(51, 153, 153)");
+            
+        });
+</script>
+{% endblock %}
+
+

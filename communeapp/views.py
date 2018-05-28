@@ -64,6 +64,19 @@ def view_businesses(request):
     
     return render(request, 'views/business.html', {"title":title, "hood":neighbourhood, "businesses":businesses})
 
+def business_profile(request, id):
+    title="Commune | Profile "
+    current_user=request.user.id
+    id_profile=get_object_or_404(Profile, id=id)
+    print(id_profile)
+    if not Profile.objects.filter(user=current_user).exists():
+        return redirect('createprofile')
+    else:
+        profile=Profile.objects.filter(user=current_user)
+    return render(request, 'views/id-profile.html', {"profile":profile, "title":title})
+    
+    
+
 def search_business(request):
     if 'business' in request.GET and request.GET['business']:
         search_term=request.GET.get('business')
