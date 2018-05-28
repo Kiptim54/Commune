@@ -59,6 +59,7 @@ class Message(models.Model):
     user=models.ForeignKey(User)
     profile=models.ForeignKey(Profile)
     hood=models.ForeignKey(Neighbourhood)
+    posted=models.DateTimeField(auto_now_add=True, blank=True)
 
     def __str__(self):
         return self.message
