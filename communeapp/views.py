@@ -19,22 +19,26 @@ def index_page(request):
     '''
     title="Commune | Home"
     current_user=request.user
+    current_user.id=request.user.id
     if not current_user.is_authenticated():
         return redirect('login')
     else:
         allprofiles=Profile.objects.all()
         profile=Profile.objects.filter(user=current_user)
-    return render(request, 'watch/index.html' ,{"title":title, "profile":profile, "profile":allprofiles})
+    return render(request, 'watch/index.html' ,{"title":title, "profile":profile, "profile":allprofiles, "id":current_user.id})
 
 
-def view_profile(request):
+def view_profile(request, id):
     title="Commune | Profile "
-    current_user=request.user
+    current_user=request.user.id
+    id=get_object_or_404(Profile,id=id)
+
+    print(id)
     if not Profile.objects.filter(user=current_user).exists():
         return redirect('createprofile')
     else:
-        profile=Profile.objects.filter(user=current_user)
-    return render(request, 'views/profile.html', {"profile":profile, "title":title })
+        profile=Profile.objects.filter(user__username=id)
+    return render(request, 'views/profile.html', {"profile":profile, "title":title ,"id":current_user })
 
 def view_messages(request):
     title="Commune | Alerts "
@@ -49,12 +53,16 @@ def view_messages(request):
 def view_businesses(request):
     title="Commune | Business"
     current_user=request.user
+    current_user.id=request.user.id
     neighbours=Profile.objects.get(user=current_user)
     neighbourhood=neighbours.neighbourhood
+    
     businesses=Business.objects.filter(neighbourhood=neighbourhood)
     print(businesses)
+    # selected_profile=get_object_or_404(Profile,user__username=id)
+    # print(selected_profile)
 
-    return render(request, 'views/business.html', {"title":title, "hood":neighbourhood, "businesses":businesses})
+    return render(request, 'views/business.html', {"title":title, "hood":neighbourhood, "businesses":businesses , "id":current_user.id})
 
 def search_business(request):
     if 'business' in request.GET and request.GET['business']:
