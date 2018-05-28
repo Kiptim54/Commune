@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse, redirect, HttpResponseRedirect, get_object_or_404
+from django.shortcuts import render, HttpResponse, redirect, HttpResponseRedirect, get_object_or_404, get_list_or_404, Http404
 from django.contrib.sites.shortcuts import get_current_site
 from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
@@ -20,6 +20,7 @@ def index_page(request):
     title="Commune | Home"
     current_user=request.user
     current_user.id=request.user.id
+    print("hello")
     if not current_user.is_authenticated():
         return redirect('login')
     else:
@@ -56,12 +57,14 @@ def view_businesses(request):
     current_user.id=request.user.id
     neighbours=Profile.objects.get(user=current_user)
     neighbourhood=neighbours.neighbourhood
-    
     businesses=Business.objects.filter(neighbourhood=neighbourhood)
     print(businesses)
-    # selected_profile=get_object_or_404(Profile,user__username=id)
-    # print(selected_profile)
-
+    profile=Profile.objects.all()
+    profile_id=profile
+    selected_profile=get_object_or_404(Profile,id=profile_id)
+    
+    print(selected_profile)
+    
     return render(request, 'views/business.html', {"title":title, "hood":neighbourhood, "businesses":businesses , "id":current_user.id})
 
 def search_business(request):
