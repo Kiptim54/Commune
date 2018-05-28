@@ -9,18 +9,19 @@
 {% block content %}
 
 {% if profile %}
-{% for prof in profile %}
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-6 offset-md-3 text-center">
             <div id="profilepage">
                 <h3>Profile</h3>
                 <hr>
-                <img id="profileimage" src="{{prof.profile_image.url}}" class="img-responsive" alt="">
+                <img id="profileimage" src="{{profile.profile_image.url}}" class="img-responsive" alt="">
                 <div class="profilecontent">
-                        <h3>Name:{{prof.name}}</h3>
-                        <p>Email:{{prof.email}}</p>
-                        <p>Neighbourhood:{{prof.neighbourhood}}</p>
+                        <h3>Name:{{profile.name}}</h3>
+                        <p>Email:{{profile.email}}</p>
+                        <p>Neighbourhood:{{profile.neighbourhood}}</p>
+                        {% if  current_user is profile.user.username %}
                         <div class="formsprofile">
                                 <form action="{% url 'createprofile' %}" method="post">
                                         {% csrf_token%}
@@ -36,6 +37,9 @@
                                     </form>
                                     
                         </div>
+                        {%else %}
+                        
+                        {%endif%}
                       
 
                        
@@ -45,8 +49,8 @@
     </div>
 </div>
 
-{% endfor %}
-{{profile.name}}
+
+
 {% else %}
 <p>You do not have a profile, create one  <a id="linkhere" href="{% url 'createprofile' %}">here: 
    </a>

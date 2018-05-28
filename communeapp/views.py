@@ -58,13 +58,13 @@ def view_businesses(request):
     profile=Profile.objects.all()
     print(profile)
     profile_id=profile
-    selected_profile=get_object_or_404(Profile,id=profile)
-    final=selected_profile.id
-    print(final)
+    # selected_profile=get_list_or_404(Profile,id=profile)
+    # final=selected_profile.id
+    # print(final)
     
-    print(selected_profile)
+    # print(selected_profile)
     
-    return render(request, 'views/business.html', {"title":title, "hood":neighbourhood, "businesses":businesses, "id":final})
+    return render(request, 'views/business.html', {"title":title, "hood":neighbourhood, "businesses":businesses})
 
 def business_profile(request, id):
     title="Commune | Profile "
@@ -75,7 +75,7 @@ def business_profile(request, id):
         return redirect('createprofile')
     else:
         profile=Profile.objects.filter(user=current_user)
-    return render(request, 'views/id-profile.html', {"profile":profile, "title":title ,"id":id})
+    return render(request, 'views/id-profile.html', {"profile":id_profile, "title":title ,"id":id})
     
     
 
