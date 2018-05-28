@@ -7,8 +7,9 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.index_page, name='landingpage'),
-      url(r'^search/', views.search_business, name='search_business'),
+    url(r'^search/', views.search_business, name='search_business'),
     url(r'^createprofile/$', views.create_profile, name='createprofile'),
+    url(r'^neighbours/$', views.see_neighbours, name='see_neighbours'),
     url(r'neighbourhood/$', views.create_neighbourhood, name='create_neighbourhood'),
     url(r'business/$', views.create_business, name='create_business'),
     url(r'^message/$', views.send_message, name='send_message'),

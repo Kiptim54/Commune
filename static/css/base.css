@@ -67,6 +67,8 @@ body, .container-fluid, .row, .col-xs-12{
     top:25%;
     width: 100%;
     height: auto;
+    
+   
 }
 img{
     margin-top:0;
@@ -135,4 +137,14 @@ a, a:hover{
  .formsprofile form{
     display: inline-block;
     color:pink;
+}
+#neighbourimage{
+    height: 200px;
+    width: 200px;
+    padding: 5px;
+    text-align: center; 
+    border-radius: 50%;
+    position: relative;
+    left:33%;
+    display: inline-block;
 }

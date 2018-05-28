@@ -64,6 +64,21 @@ def search_business(request):
 
         return render(request, 'views/searched_business.html', {"message":message, "businesses":searched_business})
 
+def see_neighbours(request):
+    '''
+    views to see all your neighbours
+    '''
+    title="Commune | Neighbours"
+    current_user=request.user
+    profile_email=current_user.email
+    profile=Profile.objects.get(email=profile_email)
+    print(profile)
+    neighbourhood=profile.neighbourhood
+    print(neighbourhood)
+    neighbours=Profile.objects.filter(neighbourhood=neighbourhood)
+    print(neighbours)
+    return render(request, 'views/neighbours.html', {"neighbours":neighbours})
+
 
 @login_required
 def create_profile(request):
