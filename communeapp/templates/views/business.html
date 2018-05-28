@@ -38,7 +38,7 @@
             <h5 class="card-title"><p>Name: {{business.business_name}}</p></h5>
             <p class="card-text">Owner: {{business.business_owner}}</p>
             <p class="card-text">Contact Email: {{business.business_email}}</p>
-            <a href="{% url 'view_profile' %}" class="btn btn-info">See {{business.business_owner}}'s Profile</a>
+            <a href="{% url 'business_profile' id=business.business_owner.id %}" class="btn btn-info">See {{business.business_owner}}'s Profile</a>
             </div>
             <div class="card-footer text-muted">
             ~~{{business.neighbourhood}}

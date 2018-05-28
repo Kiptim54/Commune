@@ -55,14 +55,16 @@ def view_businesses(request):
     neighbours=Profile.objects.get(user=current_user)
     neighbourhood=neighbours.neighbourhood
     businesses=Business.objects.filter(neighbourhood=neighbourhood)
-    print(businesses)
     profile=Profile.objects.all()
+    print(profile)
     profile_id=profile
-    selected_profile=get_object_or_404(Profile,id=profile_id)
+    selected_profile=get_object_or_404(Profile,id=profile)
+    final=selected_profile.id
+    print(final)
     
     print(selected_profile)
     
-    return render(request, 'views/business.html', {"title":title, "hood":neighbourhood, "businesses":businesses})
+    return render(request, 'views/business.html', {"title":title, "hood":neighbourhood, "businesses":businesses, "id":final})
 
 def business_profile(request, id):
     title="Commune | Profile "
@@ -73,7 +75,7 @@ def business_profile(request, id):
         return redirect('createprofile')
     else:
         profile=Profile.objects.filter(user=current_user)
-    return render(request, 'views/id-profile.html', {"profile":profile, "title":title})
+    return render(request, 'views/id-profile.html', {"profile":profile, "title":title ,"id":id})
     
     
 
@@ -92,6 +94,8 @@ def see_neighbours(request):
     title="Commune | Neighbours"
     current_user=request.user
     profile_email=current_user.email
+    # profile_id=get_object_or_404(Profile, id=id)
+    # print(profile_id)
     profile=Profile.objects.get(email=profile_email)
     print(profile)
     neighbourhood=profile.neighbourhood
@@ -101,7 +105,7 @@ def see_neighbours(request):
     return render(request, 'views/neighbours.html', {"neighbours":neighbours})
 
 
-@login_required
+@login_required(login_url='/login/')
 def create_profile(request):
     '''
     function that saves users profile
@@ -122,7 +126,8 @@ def create_profile(request):
     else:
         form=Creatprofileform()
     return render(request, 'watch/create_profile.html', {"title":title, "form":form})
-@login_required
+
+@login_required(login_url='/login/')
 def create_neighbourhood(request):
     '''
     function for user to create neighbourhood
@@ -138,7 +143,7 @@ def create_neighbourhood(request):
     else:
         form=Createneighbourhood()
     return render(request, 'watch/neighbourhood_profile.html', {"title":title, "form":form})
-@login_required
+@login_required(login_url='/login/')
 def create_business(request):
     '''
     function to create business in 
@@ -157,7 +162,7 @@ def create_business(request):
         form=BusinessForm()
     return render(request, 'watch/business_profile.html', {"title":title, "form":form})
     
-@login_required
+@login_required(login_url='/login/')
 def send_message(request):
     '''
     function for neighbours to share messages with 
