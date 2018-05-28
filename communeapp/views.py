@@ -96,7 +96,7 @@ def see_neighbours(request):
     profile_email=current_user.email
     # profile_id=get_object_or_404(Profile, id=id)
     # print(profile_id)
-    profile=Profile.objects.get(email=profile_email)
+    profile=Profile.objects.all().get(email=profile_email)
     print(profile)
     neighbourhood=profile.neighbourhood
     print(neighbourhood)
