@@ -29,17 +29,14 @@ def index_page(request):
     return render(request, 'watch/index.html' ,{"title":title, "profile":profile, "profile":allprofiles, "id":current_user.id})
 
 
-def view_profile(request, id):
+def view_profile(request):
     title="Commune | Profile "
     current_user=request.user.id
-    id=get_object_or_404(Profile,id=id)
-
-    print(id)
     if not Profile.objects.filter(user=current_user).exists():
         return redirect('createprofile')
     else:
-        profile=Profile.objects.filter(user__username=id)
-    return render(request, 'views/profile.html', {"profile":profile, "title":title ,"id":current_user })
+        profile=Profile.objects.filter(user=current_user)
+    return render(request, 'views/profile.html', {"profile":profile, "title":title})
 
 def view_messages(request):
     title="Commune | Alerts "
@@ -65,7 +62,7 @@ def view_businesses(request):
     
     print(selected_profile)
     
-    return render(request, 'views/business.html', {"title":title, "hood":neighbourhood, "businesses":businesses , "id":current_user.id})
+    return render(request, 'views/business.html', {"title":title, "hood":neighbourhood, "businesses":businesses})
 
 def search_business(request):
     if 'business' in request.GET and request.GET['business']:
