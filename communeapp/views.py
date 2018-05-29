@@ -30,6 +30,9 @@ def index_page(request):
 
 
 def view_profile(request):
+    '''
+    funtion for viewing a user's profile
+    '''
     title="Commune | Profile "
     current_user=request.user.id
     if not Profile.objects.filter(user=current_user).exists():
@@ -39,6 +42,9 @@ def view_profile(request):
     return render(request, 'views/profile.html', {"profile":profile, "title":title})
 
 def view_messages(request):
+    '''
+    function for viewing messages posted to neighbourhood
+    '''
     title="Commune | Alerts "
     current_user=request.user
     neighbours=Profile.objects.get(user=current_user)
@@ -49,6 +55,9 @@ def view_messages(request):
     return render(request, 'views/messages.html', {"title":title, "messages":message, "hood":neighbourhood})
 
 def view_businesses(request):
+    '''
+    function for viewing all businesses in one's neighbourhood
+    '''
     title="Commune | Business"
     current_user=request.user
     current_user.id=request.user.id
@@ -67,6 +76,9 @@ def view_businesses(request):
     return render(request, 'views/business.html', {"title":title, "hood":neighbourhood, "businesses":businesses})
 
 def business_profile(request, id):
+    '''
+    function for to show one's profile with their id on the url
+    '''
     title="Commune | Profile "
     current_user=request.user.id
     id_profile=get_object_or_404(Profile, id=id)
@@ -80,6 +92,9 @@ def business_profile(request, id):
     
 
 def search_business(request):
+    '''
+    function that searching for all businesses
+    '''
     if 'business' in request.GET and request.GET['business']:
         search_term=request.GET.get('business')
         searched_business=Business.search_business(search_term)
@@ -187,6 +202,10 @@ def send_message(request):
 
 
 def signup(request):
+    '''
+    function that signs up a new user
+    '''
+
     title="Commune | Sign Up"
     if request.method == 'POST':
         form = SignUpForm(request.POST)
@@ -210,6 +229,10 @@ def signup(request):
     return render(request, 'registration/signup.html', {'form': form, "title":title})
 
 def activate(request, uidb64, token):
+    '''
+    function activates a user and allows then to 
+    start using the account
+    '''
     try:
         uid = force_text(urlsafe_base64_decode(uidb64))
         user = User.objects.get(pk=uid)
@@ -227,6 +250,10 @@ def activate(request, uidb64, token):
 
 
 def account_activation_sent(request):
+    '''
+    function that redirects to template
+    that tells users an email has been sent to them
+    '''
     current_user=request.user
     # if current_user.is_authenticated:
     #     return redirect('account_activation_sent')

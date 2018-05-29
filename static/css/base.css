@@ -125,6 +125,10 @@ a, a:hover{
     color:white;
     background:#41A9A2;
     padding-top:2%;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
 }
 .card{
     margin-bottom:3%;
