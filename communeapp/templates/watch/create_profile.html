@@ -7,20 +7,22 @@
 {% endblock %}
 
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <h3>Create Profile</h3>
-                <form  action="{%url 'createprofile'%}" method="post" enctype="multipart/form-data">
-                    {%csrf_token%}
-                
-                    {% bootstrap_form form%}
-
-                    <input type="submit" class="btn btn-success btn-lg" value="Post">
-                    <p>Can't find your neighbourhood? register it  <a href="{% url 'create_neighbourhood'%}">here</a></p>
-                  </form>   
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-8">
+                    <h3>Create Profile</h3>
+                    <form  action="{%url 'createprofile'%}" method="post" enctype="multipart/form-data">
+                        {%csrf_token%}
+                    
+                        {% bootstrap_form form%}
+    
+                        <input type="submit" class="btn btn-success btn-lg" value="Post">
+                        <p>Can't find your neighbourhood? register it  <a href="{% url 'create_neighbourhood'%}">here</a></p>
+                      </form>  
+            </div>
+            <div class="col-2"></div>
         </div>
     </div>
-</div>
 <script type='text/javascript' src="{% static 'js/jquery-3.3.1.js'%}"></script>
 <script type='text/javascript' src="{% static 'js/scripts.js'%}"></script>
 {% endblock %}

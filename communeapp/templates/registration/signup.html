@@ -7,10 +7,28 @@
 <link rel="stylesheet" href="{% static 'css/base.css' %}">
 {% endblock %}
 {% block content %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col-6">
+        <h2>Sign up</h2>
+        <hr>
+<form method="post">
+  {% csrf_token %}
+  {% bootstrap_form form%}
+  <button type="submit">Sign up</button>
+  <p>Have an account? <a href="{% url 'login'  %}">Login </a></p>
+</form>
+<hr>
+    </div>
+    <div class="col-3"></div>
+  </div>
+</div>
 
-  <div class="container">
+  <!-- <div class="container">
     <div class="row">
-      <div class="col-md-6 offset-md-3">
+      <div class="col-xs-3">[poiuytr</div>
+      <div class="col-xs-6">
           <h2>Sign up</h2>
           <hr>
   <form method="post">
@@ -20,8 +38,11 @@
     <p>Have an account? <a href="{% url 'login'  %}">Login </a></p>
   </form>
       </div>
+    
+    </div>
+    <div class="col-xs-3">[poiuyt</div>
     </div>
   </div>
   <hr>
-  
+   -->
 {% endblock %}
