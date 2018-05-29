@@ -1,41 +1,38 @@
 # Snaps Gallery| Brenda Kiptim
 
->This is a Gallery application built using Django and Postgress.
+>This is a application for neighbours to get up to date with the latest news in the neighbourhood 
 
 ## SPECS
 
 The blog allows users:
 
-    1. views photos
+    1. Create a profile
 
-    2. Filter photos by location
+    2. View their neighbours 
 
-    3. search for photos by category
+    3. See the businesses in the neighbourhood
 
-The blog allows admin:
+    4. search for businesses all beyond their neighbourhood
 
-    1. Post photos, categories and location
+    5. Post messages and alerts to the neighbourhood page
 
-    2. delete and update photos
 
 ## Progress
-[x]  views photos
+[x]  Create and update profile
 
-[x] search for photos by category
+[x] view and search for businesses
 
-[x] update and delete photos
+[x] Post and view messages
 
-[x] admin
+[x] Design
 
-[ ] Tests
+[ ] Tests(Halfway)
 
-[ ] Filter photos by location
-
-[ ] 
+[ ] Deleting of Message, Business and Profile
 
 
 ## Deployment
-View the live site [here](https://snaps54.herokuapp.com/)
+View the live site [here](http://commune54.herokuapp.com/)
 
 ## Built With
 
